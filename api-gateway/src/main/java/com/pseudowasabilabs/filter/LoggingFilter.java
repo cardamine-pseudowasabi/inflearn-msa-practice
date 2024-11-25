@@ -55,7 +55,8 @@ public class LoggingFilter extends AbstractGatewayFilterFactory<LoggingFilter.Co
                     log.info("LoggingFilter POST filter - response code: {}", response.getStatusCode());
                 }
             }));
-        }, Ordered.HIGHEST_PRECEDENCE);
+        }, Ordered.LOWEST_PRECEDENCE);
+        // if Ordered.HIGHEST_PRECEDENCE is assigned, LoggingFilter.class has higher precedence than the default filter (in this case, GlobalFilter.class)
 
         return filter;
     }
